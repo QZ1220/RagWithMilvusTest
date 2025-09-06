@@ -1,7 +1,7 @@
 # 1、项目介绍
 项目视频链接:         
-https://youtu.be/i3ul7JAAQIY              
-
+https://youtu.be/i3ul7JAAQIY                
+https://www.bilibili.com/video/BV1whaqzzEK8/                 
 
 AI在企业应用的不尽如人意，不仅仅在于工程上的高要求，也在于开发者往往容易沉浸于某些技术细节，却忽视真实场景的复杂性       
 以看似简单的AI内容搜索为例，用户的需求远非“搜索下关于AI智能体的文章”这样的单维问题，靠着“知识库+向量+LLM”可以轻松解决              
