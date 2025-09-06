@@ -56,7 +56,8 @@ https://gitee.com/NanGePlus/RagWithMilvusTest
 新建命令行终端，在终端中运行如下指令进行安装                        
 pip install pymilvus==2.6.0                            
 pip install openai==1.101.0                                 
-pip install mcp==1.8.0                                  
+pip install mcp==1.8.0                             
+pip install requests==2.32.5           
 **注意:** 建议先使用要求的对应版本进行本项目测试，避免因版本升级造成的代码不兼容。测试通过后，可进行升级测试                                     
 
 
