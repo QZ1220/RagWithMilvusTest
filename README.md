@@ -1,7 +1,10 @@
 # 1、项目介绍
-项目视频链接:         
-https://youtu.be/i3ul7JAAQIY                
-https://www.bilibili.com/video/BV1whaqzzEK8/                 
+【从内容采集到智能搜索】全栈开源：手把手构建能理解业务逻辑的企业级AI搜索Agent，低代码采集 + 云原生向量库Milvus + MCP协议 + Agent                       
+https://youtu.be/i3ul7JAAQIY                 
+https://www.bilibili.com/video/BV1whaqzzEK8/                   
+
+【从内容采集到智能搜索】Milvus Attu图形用户界面可视化管理工具操作指南，创建数据库、定义Schema、创建索引、创建集合、上传本地文件导入数据               
+https://youtu.be/SaMb4kA7OT0                
 
 AI在企业应用的不尽如人意，不仅仅在于工程上的高要求，也在于开发者往往容易沉浸于某些技术细节，却忽视真实场景的复杂性       
 以看似简单的AI内容搜索为例，用户的需求远非“搜索下关于AI智能体的文章”这样的单维问题，靠着“知识库+向量+LLM”可以轻松解决              
