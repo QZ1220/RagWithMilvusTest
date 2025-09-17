@@ -659,7 +659,7 @@ if __name__ == "__main__":
         search_manager = MilvusSearchManager(
             milvus_uri=os.getenv("MILVUS_URI", "http://localhost:19530"),
             db_name=os.getenv("MILVUS_DATABASE_NAME", "milvus_database"),
-            openai_base_url=os.getenv("LLM_BASE_URL", "https://nangeai.top/v1"),
+            openai_base_url=os.getenv("LLM_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"),
             openai_api_key=os.getenv("LLM_API_KEY", "")
         )
 

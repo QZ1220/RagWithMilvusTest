@@ -35,8 +35,8 @@ logger.addHandler(handler)
 # 模型配置字典
 MODEL_CONFIGS = {
     "openai": {
-        "base_url": "https://nangeai.top/v1",
-        "api_key": "sk-33RqjaXhsrjeapyKC3DiwvG1DdpMDU9tHCCmwVxnxcw5HmLS",
+        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "api_key": os.getenv("DASHSCOPE_API_KEY"),
         "chat_model": "gpt-4o-mini",
         "embedding_model": "text-embedding-3-small"
     },

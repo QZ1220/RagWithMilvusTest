@@ -1,3 +1,5 @@
+import os
+
 from pymilvus import MilvusClient, DataType, Function, FunctionType
 from openai import OpenAI
 from tqdm import tqdm
@@ -26,8 +28,8 @@ class MilvusDataInserter:
 	def __init__(self,
 				 milvus_uri: str = "http://localhost:19530",
 				 db_name: str = "my_milvus_database_demo",
-				 openai_base_url: str = "https://nangeai.top/v1",
-				 openai_api_key: str = "sk-33RqjaXhsrjeapyKC3DiwvG1DdpMDU9tHCCmwVxnxcw5HmLS"):
+				 openai_base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1",
+				 openai_api_key: str = os.getenv("DASHSCOPE_API_KEY")):
 		"""
 		初始化数据插入管理器
 
@@ -419,8 +421,8 @@ if __name__ == "__main__":
 	inserter = MilvusDataInserter(
 		milvus_uri="http://localhost:19530",
 		db_name="milvus_database",
-		openai_base_url= "https://nangeai.top/v1",
-		openai_api_key= "sk-33RqjaXhsrjeapyKC3DiwvG1DdpMDU9tHCCmwVxnxcw5HmLS"
+		openai_base_url= "https://dashscope.aliyuncs.com/compatible-mode/v1",
+		openai_api_key= os.getenv("DASHSCOPE_API_KEY")
 	)
 
 	# 读取本地json文件
@@ -440,7 +442,7 @@ if __name__ == "__main__":
 			return None
 
 	# 指定文件路径
-	file_path = "/Volumes/Files/n8ndata/test.json"
+	file_path = "/Users/wqz/ai/Volumes/Files/n8ndata/test.json"
 	# 读取并打印 JSON 内容
 	json_data = read_json_file(file_path)
 	if json_data is not None:

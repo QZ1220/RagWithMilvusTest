@@ -24,7 +24,7 @@ async def run():
             #     file.write(str(tools))
 
             # 工具功能测试
-            result = await session.call_tool("search_documents",{"query_text":"全球AI百强榜发布,第一是谁？"})
+            result = await session.call_tool("search_documents",{"query_text":"全球AI百强榜发布,第一是谁？","filter_query":"文章的发布时间在2025年09月13日之后，发布者是量子位，字数在200字内，价格不超过500元","search_type":"hybrid","limit":3})
             print(f"Supported result:{result}")
 
 

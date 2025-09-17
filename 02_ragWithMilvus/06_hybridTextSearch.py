@@ -11,8 +11,8 @@ import json
 # 混合搜索
 # 1、大模型初始化
 openai_client = OpenAI(
-	base_url="https://nangeai.top/v1",
-	api_key="sk-33RqjaXhsrjeapyKC3DiwvG1DdpMDU9tHCCmwVxnxcw5HmLS"
+	base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+	api_key=os.getenv("DASHSCOPE_API_KEY")
 )
 
 # 2、实例化Milvus客户端对象
