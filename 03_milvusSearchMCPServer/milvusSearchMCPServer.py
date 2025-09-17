@@ -105,7 +105,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             milvus_uri=os.getenv("MILVUS_URI", "http://localhost:19530"),
             db_name=os.getenv("MILVUS_DATABASE_NAME", "milvus_database"),
             openai_base_url=os.getenv("LLM_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"),
-            openai_api_key=os.getenv("LLM_API_KEY", "")
+            openai_api_key=os.getenv("DASHSCOPE_API_KEY", "")
         )
 
         # 执行混合搜索示例
