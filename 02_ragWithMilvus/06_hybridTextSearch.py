@@ -1,3 +1,5 @@
+import os
+
 from pymilvus import MilvusClient, DataType, Function, FunctionType
 from pymilvus import AnnSearchRequest
 from openai import OpenAI
@@ -24,7 +26,7 @@ client = MilvusClient(
 # 3、定义文本embedding处理函数
 def emb_text(text):
     return (
-        openai_client.embeddings.create(input=text, model="text-embedding-3-small")
+        openai_client.embeddings.create(input=text, model="text-embedding-v3")
         .data[0]
         .embedding
     )

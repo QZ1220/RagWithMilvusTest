@@ -164,7 +164,7 @@ class MilvusCollectionManager:
             schema.add_field(
                 field_name="content_dense",
                 datatype=DataType.FLOAT_VECTOR,
-                dim=1536,
+                dim=1024,
                 description="文档块的密集向量嵌入"
             )
             schema.add_field(

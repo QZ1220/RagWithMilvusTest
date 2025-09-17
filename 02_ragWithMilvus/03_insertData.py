@@ -89,7 +89,7 @@ class MilvusDataInserter:
 			logger.error(f"客户端初始化失败: {e}")
 			raise
 
-	def emb_text(self, text: str, model: str = "text-embedding-3-small", max_retries: int = 3) -> List[float]:
+	def emb_text(self, text: str, model: str = "text-embedding-v3", max_retries: int = 3) -> List[float]:
 		"""
 		生成文本的向量嵌入
 
@@ -103,7 +103,7 @@ class MilvusDataInserter:
 		"""
 		if not text or not isinstance(text, str):
 			logger.warning("输入文本为空或非字符串类型，返回零向量")
-			return [0.0] * 1536  # 返回默认维度的零向量
+			return [0.0] * 1024  # 返回默认维度的零向量
 
 		# 文本长度检查和截断
 		if len(text) > 8000:  # OpenAI embedding模型的大致限制
@@ -134,7 +134,7 @@ class MilvusDataInserter:
 				else:
 					logger.error(f"生成嵌入向量最终失败，返回随机向量")
 					# 返回随机向量作为备选
-					return [random.random() for _ in range(1536)]
+					return [random.random() for _ in range(1024)]
 
 	def split_text_into_chunks(self, text: str, chunk_size: int = 800, overlap: int = 100) -> List[str]:
 		"""

@@ -273,7 +273,7 @@ class MilvusSearchManager:
             logger.error(f"客户端初始化失败: {e}")
             raise
 
-    def emb_text(self, text: str, model: str = "text-embedding-3-small", max_retries: int = 3) -> List[float]:
+    def emb_text(self, text: str, model: str = "text-embedding-v3", max_retries: int = 3) -> List[float]:
         """
         生成文本的向量嵌入
 
@@ -287,7 +287,7 @@ class MilvusSearchManager:
         """
         if not text or not isinstance(text, str):
             logger.warning("输入文本为空或非字符串类型，返回零向量")
-            return [0.0] * 1536  # 返回默认维度的零向量
+            return [0.0] * 1024  # 返回默认维度的零向量
 
         # 文本长度检查和截断
         if len(text) > 8000:  # OpenAI embedding模型的大致限制
@@ -318,7 +318,7 @@ class MilvusSearchManager:
                 else:
                     logger.error(f"生成嵌入向量最终失败，返回随机向量")
                     # 返回随机向量作为备选
-                    return [random.random() for _ in range(1536)]
+                    return [random.random() for _ in range(1024)]
 
     def _validate_search_params(self, collection_name: str, query_text: str,
                                 search_type: str, limit: int) -> bool:
@@ -428,7 +428,7 @@ class MilvusSearchManager:
             logger.info("执行密集向量搜索（语义搜索）")
 
             # 生成查询向量
-            model = os.getenv("LLM_EMBEDDING_MODEL", "text-embedding-3-small")
+            model = os.getenv("LLM_EMBEDDING_MODEL", "text-embedding-v3")
             query_vector = self.emb_text(query_text, model)
 
             res = self.milvus_client.search(
