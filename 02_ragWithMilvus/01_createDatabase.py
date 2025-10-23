@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 def create_milvus_database(
         uri: str = "http://localhost:19530",
-        db_name: str = "my_milvus_database_demo",
+        db_name: str = "jobs_rag_demo",
         timeout: float = 30.0
 ) -> bool:
     """
@@ -211,7 +211,7 @@ def delete_database_safely(uri: str, db_name: str) -> bool:
 if __name__ == "__main__":
     # 配置参数
     MILVUS_URI = "http://localhost:19530"
-    DATABASE_NAME = "milvus_database"
+    DATABASE_NAME = "jobs_rag"
 
     print("开始Milvus数据库操作...")
 
