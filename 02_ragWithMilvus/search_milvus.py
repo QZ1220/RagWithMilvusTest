@@ -160,19 +160,12 @@ print()
 
 
 # # 9、获取查找持有指定主键的实体
-# res = client.get(
-#     collection_name="my_collection_demo_chunked",
-#     ids=[460348642159470562, 460348642159470563, 460348642159470564],
-#     output_fields=["title", "content_chunk", "link", "pubAuthor"]
-# )
-# print(f"res:{res}")
-
-# # 10、查询通过自定义过滤条件查找实体时，请使用查询方法
-# res = client.query(
-#     collection_name="my_collection_demo_chunked",
-#     filter='pubAuthor like "量子位%"',
-#     output_fields=["title", "content_chunk", "link", "pubAuthor"],
-#     limit=2
-# )
-# print(f"res:{res}")
-
+# 相当于rds的=值查询
+res = client.get(
+    collection_name="job_postings",
+    ids=[461688022328459973, 461688022328459974, 461688022328459981],
+    output_fields=["id", "title", "job_name", "job_salary", "job_edu"],
+)
+print("结果：")
+print(f"res:{res}")
+print()
