@@ -132,19 +132,32 @@ print()
 # # 分组搜索允许 Milvus 根据指定字段的值对搜索结果进行分组，以便在更高层次上汇总数据
 # # 根据提供的查询向量执行 ANN 搜索，找到与查询最相似的所有实体，按指定的group_by_field 对搜索结果进行分组
 # # 根据limit参数的定义，返回每个组的顶部结果，并从每个组中选出最相似的实体
-# question = "时序增强关系敏感知识迁移"
-# res = client.search(
-# 	collection_name="my_collection_demo_chunked",
-# 	anns_field="content_dense",
-# 	data=[emb_text(question)],
-#     limit=3,
-#     group_by_field="pubAuthor",
-#     output_fields=["title", "content_chunk", "link", "pubAuthor"]
-# )
-# retrieved_lines_with_distances = [
-#     (res["entity"]["title"], res["entity"]["content_chunk"], res["entity"]["link"], res["entity"]["pubAuthor"], res["distance"]) for res in res[0]
-# ]
-# print(json.dumps(retrieved_lines_with_distances, indent=4, ensure_ascii=False))
+question = "学历要求是硕士及以上且月薪在35K及以上的岗位有哪些"
+res = client.search(
+    collection_name="job_postings",
+    anns_field="embedding",
+    data=[emb_text(question)],
+    limit=3,
+    filter='job_edu like "%硕士%"',
+    group_by_field="job_salary",
+    group_size=2,
+    output_fields=["title", "job_name", "job_salary", "job_edu"],
+    # search_params={
+	# 	"metric_type": "COSINE",
+    #     "params": {
+    #         "radius": 0.4,
+    #         "range_filter": 0.6
+    #     }
+    # }
+)
+retrieved_lines_with_distances = [
+    (res["entity"]["title"], res["entity"]["job_name"], res["entity"]["job_salary"], res["entity"]["job_edu"], res["distance"]) for res in res[0]
+]
+print("问题："+question)
+print("答案：")
+print(json.dumps(retrieved_lines_with_distances, indent=4, ensure_ascii=False))
+print()
+
 
 # # 9、获取查找持有指定主键的实体
 # res = client.get(
