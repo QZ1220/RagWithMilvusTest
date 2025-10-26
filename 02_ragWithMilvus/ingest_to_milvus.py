@@ -55,6 +55,7 @@ def create_collection(collection_name: str = "job_postings", dim: int = 1024):
         FieldSchema(name="salary_max", dtype=DataType.FLOAT),
         FieldSchema(name="salary_unit", dtype=DataType.VARCHAR, max_length=10),
         FieldSchema(name="job_edu", dtype=DataType.VARCHAR, max_length=100),
+        FieldSchema(name="job_url", dtype=DataType.VARCHAR, max_length=500),
         FieldSchema(name="edu_level", dtype=DataType.INT16),
         FieldSchema(name="text_for_embedding", dtype=DataType.VARCHAR, max_length=2000),
         FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=dim)
@@ -164,6 +165,7 @@ def preprocess_and_insert(
             job_name = job["jobName"]
             job_salary = job["jobSalary"]
             job_edu = job["jobEdu"]
+            job_url = job["jobUrl"]
 
             min_sal, max_sal, unit = parse_salary(job_salary)
             if min_sal is None:
@@ -183,6 +185,7 @@ def preprocess_and_insert(
                     "salary_max": max_sal,
                     "salary_unit": unit,
                     "job_edu": job_edu,
+                    "job_url": job_url,
                     "edu_level": edu_lvl,
                     "text_for_embedding": embed_text,
                     "embedding": embed_vec
