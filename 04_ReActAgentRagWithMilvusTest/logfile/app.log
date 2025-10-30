@@ -1,0 +1,7 @@
+2025-10-30 22:05:40,357 - __main__ - INFO - Redis初始化成功
+2025-10-30 22:05:40,971 - utils.llms - INFO - 成功初始化 qwen LLM
+2025-10-30 22:05:40,972 - __main__ - INFO - Chat模型初始化成功
+2025-10-30 22:05:40,972 - __main__ - INFO - 短期记忆Checkpointer初始化成功
+2025-10-30 22:05:40,972 - __main__ - INFO - 长期记忆store初始化成功
+2025-10-30 22:05:44,219 - __main__ - ERROR - 初始化失败: unhandled errors in a TaskGroup (1 sub-exception)
+2025-10-30 22:05:44,228 - __main__ - INFO - 关闭服务并完成资源清理

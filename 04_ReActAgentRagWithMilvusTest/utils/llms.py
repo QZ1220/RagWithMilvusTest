@@ -30,39 +30,39 @@ handler.setFormatter(logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 ))
 logger.addHandler(handler)
-
+api_key = os.getenv("DASHSCOPE_API_KEY")
 
 # 模型配置字典
 MODEL_CONFIGS = {
-    "openai": {
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "api_key": os.getenv("DASHSCOPE_API_KEY"),
-        "chat_model": "gpt-4o-mini",
-        "embedding_model": "text-embedding-v3"
-    },
-    "oneapi": {
-        "base_url": "http://139.224.72.218:3000/v1",
-        "api_key": "sk-GseYmJ8pX1D0I004W7a43506e8f1231234233C44B724FfD66aD9",
-        "chat_model": "qwen-max",
-        "embedding_model": "text-embedding-v1"
-    },
+    # "openai": {
+    #     "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    #     "api_key": os.getenv("DASHSCOPE_API_KEY"),
+    #     "chat_model": "gpt-4o-mini",
+    #     "embedding_model": "text-embedding-v3"
+    # },
+    # "oneapi": {
+    #     "base_url": "http://139.224.72.218:3000/v1",
+    #     "api_key": "sk-GseYmJ8pX1D0I004W7a43506e8f1231234233C44B724FfD66aD9",
+    #     "chat_model": "qwen-max",
+    #     "embedding_model": "text-embedding-v1"
+    # },
     "qwen": {
         "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "api_key": "sk-f718953877a84432436888b43b1bd8843026e2e5",
-        "chat_model": "qwen-turbo-latest",
+        "api_key": api_key,
+        "chat_model": "qwen-turbo",
         "embedding_model": "text-embedding-v1"
-    },
-    "ollama": {
-        "base_url": "http://localhost:11434/v1",
-        "api_key": "ollama",
-        "chat_model": "llama3.1:8b",
-        "embedding_model": "nomic-embed-text:latest"
     }
+    # "ollama": {
+    #     "base_url": "http://localhost:11434/v1",
+    #     "api_key": "ollama",
+    #     "chat_model": "llama3.1:8b",
+    #     "embedding_model": "nomic-embed-text:latest"
+    # }
 }
 
 
 # 默认配置
-DEFAULT_LLM_TYPE = "openai"
+DEFAULT_LLM_TYPE = "qwen"
 DEFAULT_TEMPERATURE = 0
 
 
@@ -147,7 +147,7 @@ def get_llm(llm_type: str = DEFAULT_LLM_TYPE) -> ChatOpenAI:
 if __name__ == "__main__":
     try:
         # 测试不同类型的LLM初始化
-        llm_openai, llm_embedding = get_llm("openai")
+        llm_openai, llm_embedding = get_llm("qwen")
 
         # 测试无效类型
         llm_invalid = get_llm("invalid_type")
